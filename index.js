@@ -5,7 +5,10 @@ const even = [2, 4, 6];
 
 //
 
-function addNumberToBank(number) {}
+function addNumberToBank(number) {
+  bank.push(number);
+  render();
+}
 
 function moveNumberFromBank() {}
 
@@ -13,7 +16,17 @@ function moveAllNumbersFromBank() {}
 
 //========Components=======
 
-function NumberForm() {}
+function NumberForm() {
+  const $form = document.createElement("form");
+  $form.innerHTML = `
+  <label>Add a number to the Bank
+  <input type="number" name="number"/></label>
+  <button>Add number</button>
+  <button>Sort 1</button>
+  <button>Sort All</button>
+  `;
+  return $form;
+}
 
 function NumberSection(label, numbers) {
   const $section = document.createElement("section");
@@ -54,7 +67,7 @@ function render() {
   const $app = document.querySelector("#app");
   $app.innerHTML = `
   <h1>Odds and Events</h1>
-  <NumberForm></NumbeForm>
+  <NumberForm></NumberForm>
   <Bank></Bank>
   <Odds></Odds>
   <Evens></Evens>
@@ -63,6 +76,8 @@ function render() {
   //   $app.querySelector("Bank").replaceWith(Bank());
   //   $app.querySelector("Odds").replaceWith(Odds());
   //   $app.querySelector("Evens").replaceWith(Evens());
+  $app.querySelector("NumberForm").replaceWith(NumberForm());
+
   $app.querySelector("Bank").replaceWith(NumberSection("Bank", bank));
   $app.querySelector("Odds").replaceWith(NumberSection("Odds", odds));
   $app.querySelector("Evens").replaceWith(NumberSection("Evens", even));
