@@ -10,7 +10,15 @@ function addNumberToBank(number) {
   render();
 }
 
-function moveNumberFromBank() {}
+function moveNumberFromBank() {
+  const number = bank.shift();
+  if (number % 2 == 0) {
+    even.push(number);
+  } else {
+    odds.push(number);
+  }
+  render();
+}
 
 function moveAllNumbersFromBank() {}
 
