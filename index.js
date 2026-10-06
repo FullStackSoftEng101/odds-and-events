@@ -20,7 +20,11 @@ function moveNumberFromBank() {
   render();
 }
 
-function moveAllNumbersFromBank() {}
+function moveAllNumbersFromBank() {
+  while (bank.length) {
+    moveNumberFromBank();
+  }
+}
 
 //========Components=======
 
