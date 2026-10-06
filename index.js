@@ -14,30 +14,39 @@ function moveAllNumbersFromBank() {}
 //========Components=======
 
 function NumberForm() {}
-function Bank() {
+
+function NumberSection(label, numbers) {
   const $section = document.createElement("section");
   $section.innerHTML = `
-    <h2>Bank</h2>
-    <p>${bank.join(" ")}</p>
+    <h2>${label}</h2>
+    <p>${numbers.join(" ")}</p>
     `;
   return $section;
 }
-function Odds() {
-  const $section = document.createElement("section");
-  $section.innerHTML = `
-    <h2>Odds</h2>
-    <p>${bank.join(" ")}</p>
-    `;
-  return $section;
-}
-function Evens() {
-  const $section = document.createElement("section");
-  $section.innerHTML = `
-    <h2>Evens</h2>
-    <p>${bank.join(" ")}</p>
-    `;
-  return $section;
-}
+// function Bank() {
+//   const $section = document.createElement("section");
+//   $section.innerHTML = `
+//     <h2>Bank</h2>
+//     <p>${bank.join(" ")}</p>
+//     `;
+//   return $section;
+// }
+// function Odds() {
+//   const $section = document.createElement("section");
+//   $section.innerHTML = `
+//     <h2>Odds</h2>
+//     <p>${odds.join(" ")}</p>
+//     `;
+//   return $section;
+// }
+// function Evens() {
+//   const $section = document.createElement("section");
+//   $section.innerHTML = `
+//     <h2>Evens</h2>
+//     <p>${even.join(" ")}</p>
+//     `;
+//   return $section;
+// }
 
 //===Render=====
 
@@ -51,9 +60,12 @@ function render() {
   <Evens></Evens>
     `;
 
-  $app.querySelector("Bank").replaceWith(Bank());
-  $app.querySelector("Odds").replaceWith(Odds());
-  $app.querySelector("Evens").replaceWith(Evens());
+  //   $app.querySelector("Bank").replaceWith(Bank());
+  //   $app.querySelector("Odds").replaceWith(Odds());
+  //   $app.querySelector("Evens").replaceWith(Evens());
+  $app.querySelector("Bank").replaceWith(NumberSection("Bank", bank));
+  $app.querySelector("Odds").replaceWith(NumberSection("Odds", odds));
+  $app.querySelector("Evens").replaceWith(NumberSection("Evens", even));
 }
 
 render();
