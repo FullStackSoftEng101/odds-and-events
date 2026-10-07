@@ -33,10 +33,23 @@ function NumberForm() {
   $form.innerHTML = `
   <label>Add a number to the Bank
   <input type="number" name="number"/></label>
-  <button>Add number</button>
-  <button>Sort 1</button>
-  <button>Sort All</button>
+  <button data-action="add">Add number</button>
+  <button data-action="sortOne">Sort 1</button>
+  <button data-action="sortAll">Sort All</button>
   `;
+  $form.addEventListener("submit", (event) => {
+    console.log(event.submitter.dataset.action);
+    const action = event.submitter.dataset.action;
+    if (action === "add") {
+      const data = new FormData($form);
+      const number = data.get("number");
+      addNumberToBank(+number);
+    } else if (action === "sortOne") {
+      moveNumberFromBank();
+    } else if (action === "sortAll") {
+      moveAllNumbersFromBank();
+    }
+  });
   return $form;
 }
 
